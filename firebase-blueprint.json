@@ -1,0 +1,97 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project",
+      "description": "A portfolio project item showing David's IT work",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100,
+          "description": "Project title"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 1000,
+          "description": "Detailed explanation of project"
+        },
+        "techStack": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 200,
+          "description": "Comma separated technologies used"
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "Url of the project image hosted on Cloudinary"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "techStack",
+        "imageUrl"
+      ]
+    },
+    "Skill": {
+      "title": "Skill",
+      "description": "A technical skill category showcasing David's IT expertise",
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string",
+          "description": "The skill category name (e.g. Infrastructure & DevOps)"
+        },
+        "items": {
+          "type": "string",
+          "description": "Comma separated skills inside this category"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "category",
+        "items"
+      ]
+    },
+    "Settings": {
+      "title": "Settings",
+      "description": "Global custom configurations and files for the homepage and resume",
+      "type": "object",
+      "properties": {
+        "heroTitle": { "type": "string" },
+        "heroSubtitle": { "type": "string" },
+        "aboutText": { "type": "string" },
+        "availableText": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "homeMediaUrl": { "type": "string" },
+        "resumeBase64": { "type": "string" },
+        "resumeFileName": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "projects/{projectId}": {
+      "schema": "Project",
+      "description": "Collection of projects showcasing David Chilengwa's IT portfolio"
+    },
+    "skills/{skillId}": {
+      "schema": "Skill",
+      "description": "Collection of technical skill categories"
+    },
+    "settings/{settingId}": {
+      "schema": "Settings",
+      "description": "Global settings for homepage custom text, banners, and CV downloads"
+    }
+  }
+}
