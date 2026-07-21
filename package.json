@@ -1,7 +1,7 @@
 {
-  "name": "david_portfolio",
+  "name": "react-example",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
@@ -21,7 +21,8 @@
     "motion": "^12.23.24",
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
-    "react-router-dom": "^7.18.1"
+    "react-router-dom": "^7.18.1",
+    "vite": "^6.2.3"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
