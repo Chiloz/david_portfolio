@@ -1,11 +1,15 @@
 # Use a lightweight official PHP-Apache server base image
 FROM php:8.2-apache
 
-# Install nodejs and npm to support front-end script elements if needed
+# Install dependencies and setup modernized NodeSource repository
 RUN apt-get update && apt-get install -y \
     curl \
-    && curl -sL https://nodesource.com | bash - \
-    && apt-get install -y nodejs \
+    gnupg \
+    ca-certificates \
+    && mkdir -p /etc/apt/keyrings \
+    && curl -fsSL https://nodesource.com | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+    && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://nodesource.com nodistro main" | tee /etc/apt/etc/apt/sources.list.d/nodesource.list \
+    && apt-get update && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
 
 # Enable Apache rewrite modules for routing backend scripts cleanly
